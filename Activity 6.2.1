@@ -1,0 +1,65 @@
+import java.util.Scanner;
+ 
+public class ArrayMultipleChoiceTest {
+  public static void main(String[] args) {
+    // Test bank array of 5 multiple choice questions
+    String[] questions = {
+      "What is the data type of an array in Java?",
+      "How do you declare an array in Java?",
+      "What is the index of the first element in an array?",
+      "How do you access an element in an array?",
+      "What is the purpose of the length property in an array?"
+    };
+ 
+    // Array of answer choices for each question
+    String[][] answerChoices = {
+      {"int", "String", "Array"},
+      {"int[] myArray;", "int myArray[];", "array myArray;"},
+      {"0", "1", "-1"},
+      {"myArray[0]", "myArray.get(0)", "myArray.access(0)"},
+      {"To get the number of elements", "To set the number of elements", "To sort the array"}
+    };
+ 
+    // Array of correct answers (A, B, C)
+    char[] correctAnswers = {'A', 'B', 'A', 'A', 'A'};
+ 
+    // Create a scanner to read user input
+    Scanner scanner = new Scanner(System.in);
+ 
+    // Initialize score to 0
+    int score = 0;
+ 
+    // Loop through each question
+    for (int i = 0; i < questions.length; i++) {
+      // Display the question and answer choices
+      System.out.println("Question " + (i + 1) + ": " + questions[i]);
+      System.out.println("A) " + answerChoices[i][0]);
+      System.out.println("B) " + answerChoices[i][1]);
+      System.out.println("C) " + answerChoices[i][2]);
+ 
+      // Get user input
+      System.out.print("Enter your answer (A, B, C): ");
+      char userAnswer = scanner.next().toUpperCase().charAt(0);
+ 
+      // Verify user input
+      while (userAnswer != 'A' && userAnswer != 'B' && userAnswer != 'C') {
+        System.out.print("Invalid input. Enter your answer (A, B, C): ");
+        userAnswer = scanner.next().toUpperCase().charAt(0);
+      }
+ 
+      // Check if user answer is correct
+      if (userAnswer == correctAnswers[i]) {
+        System.out.println("Correct!");
+        score++;
+      } else {
+        System.out.println("Incorrect! The correct answer is " + correctAnswers[i]);
+      }
+ 
+      // Add a blank line between questions
+      System.out.println();
+    }
+ 
+    // Display final score
+    System.out.println("Your final score is " + score + " out of " + questions.length);
+  }
+}
